@@ -1,20 +1,19 @@
 import {useEffect, useState, React} from 'react';
 
-import {Header} from '../components/Header.jsx'
-import {PostCard} from '../components/PostCard'
+import {Header} from '../components/Header.jsx';
+import {PostCard} from '../components/PostCard';
 
 import '../styles/Home.css'
 export function Home() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
 
   useEffect(()=>{
     fetch('http://localhost:3000/api/v1/posts/')
         .then((response)=> response.json())
         .then((data)=>{
-          setData(data)
-          console.log(data);
-        })
-  }, [])
+          setData(data);
+        });
+  }, []);
   return (
     <div className='Home'>
       <Header/>

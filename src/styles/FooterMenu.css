@@ -31,7 +31,14 @@
   margin-top: 3px;
   font-size: 20px;
   color: #fff;
-  animation: arrow 1.5s ease infinite;
+  transform: rotate(-180deg);
+  transition: .3s ease;
+}
+.arrowDown{
+  margin-top: 3px;
+  font-size: 20px;
+  color: #fff;
+  transition: .3s ease;
 }
 
 .FooterMenu-icons-container{
@@ -58,12 +65,3 @@
 }
 
 
-
-@keyframes arrow {
-  0% {
-    color: #fff;
-  }
-  50%{
-    color: var(--background-violet);
-  }
-}

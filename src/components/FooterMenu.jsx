@@ -18,7 +18,7 @@ export function FooterMenu() {
   return (<>
     <div className={verify ? 'FooterMenu up': 'FooterMenu down' }>
       <div className="FooterMenu__circle" onClick={handleFooter}>
-        {verify? <IoIosArrowDown className='arrowUp'/> : <IoIosArrowUp className='arrowUp'/> }
+        {verify? <IoIosArrowDown className='arrowUp'/> : <IoIosArrowDown className='arrowDown'/> }
       </div>
       <nav  className='FooterMenu-icons-container'>
         <div className="icon-container">
