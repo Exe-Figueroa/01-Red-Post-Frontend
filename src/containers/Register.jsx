@@ -10,12 +10,24 @@ export function Register() {
     setEye(!eye)
   }
   return (
-    <div className='Login'>
-      <form  action='' className="login-container">
-        <input type="text" placeholder='Username/Email' className='input'/>
+    <div className='Register'>
+      <form  action='' className="register-container">
+        <input type="text" placeholder='Name' className='input'/>
+        <input type="text" placeholder='Last name' className='input'/>
+        <input type="text" placeholder='Username' className='input'/>
+        <input type="text" placeholder='Email' className='input'/>
           
-        <div className="container-input-logo">
-          <input type="text" placeholder='Password' className='input'/>
+        <div className="container-input-password">
+          <input type={eye?"text":"password"} placeholder='Password' className='input'/>
+          {eye?
+          <FaEyeSlash className='eye' onClick={toggleEye}/>
+          :
+          <FaEye className='eye' onClick={toggleEye}/>
+          }
+        </div>
+        <div className="container-input-password">
+          <input type={eye?"text":"password"} placeholder='Check Password'
+          value="" className='input'/>
           {eye?
           <FaEyeSlash className='eye' onClick={toggleEye}/>
           :
@@ -24,8 +36,8 @@ export function Register() {
         </div>
 
         <div className="buttons-container">
-          <input type="submit" value="Login" className="login-btn"/>
-          <button className="register-btn">Register</button>
+          <input type="submit" value="Register" className="register-btn"/>
+          <button className="login-btn">Login</button>
         </div>
       </form>
     </div>

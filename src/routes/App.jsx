@@ -2,9 +2,14 @@ import {React, useState, useEffect} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {io} from 'socket.io-client'
 
+//views
 import {Home} from '../containers/Home.jsx';
 import {Login} from '../containers/Login.jsx';
+
+//components
 import { FooterMenu } from '../components/FooterMenu.jsx';
+import { Register } from "../containers/Register.jsx";
+import { User } from "../containers/User.jsx";
 
 const socket = io('http://localhost:3000')
 
@@ -20,11 +25,13 @@ function App() {
   },[])
   return (
     <BrowserRouter>
-    {connect? 'conectado': 'desconectado'}
       <Routes>
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
+        <Route path="/user" element={<User />} />
       </Routes>
+    {connect? 'conectado': 'desconectado'}
       <FooterMenu/>
     </BrowserRouter>
   );

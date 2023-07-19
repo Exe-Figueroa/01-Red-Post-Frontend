@@ -1,0 +1,80 @@
+.Register {
+  width: 100%;
+  height: calc(100vh - 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-container {
+  min-width: 300px;
+  min-height: 475px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 16px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+}
+.register-container input.input {
+  width: 250px;
+  height: 50px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0 15px ;
+  border-radius: 16px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  border: none;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.4rem;
+  margin-top: 10px;
+}
+.register-container .input:focus{
+  outline-color: rgba(0, 0, 0, 0.25);
+}
+
+.register-container .container-input-password {
+  position: relative;
+}
+
+.register-container .container-input-password .eye{
+  position: absolute;
+  top: calc(50% + 5px);
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.buttons-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons-container input.register-btn{
+  width: 200px;
+  height: 38px;
+  border: none;
+  border-radius: 16px;
+  color: #fff;
+  background: var(--background-violet);
+  font-size: 1.6rem;
+}
+.buttons-container button.login-btn{
+  width: 200px;
+  height: 38px;
+  border: none;
+  border-radius: 16px;
+  color: rgba(0, 0, 0, 0.5);
+  background: none;
+  font-size: 1.6rem;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  cursor: pointer;
+  margin: 10px 0;
+}
