@@ -9,8 +9,8 @@
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);
-  font-size: 30px;
+  transform: translate(-20%, -50%);
+  font-size: 40px;
   color: rgba(0, 0, 0, 0.50);
 }
 
@@ -19,7 +19,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background: var(    --background-violet);
+  background: var(--background-violet);
   min-width: 200px;
   max-width: 250px;
   height: 35px;

@@ -1,12 +1,35 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import '../styles/User.css'
 
 import { UserHeader } from '../components/UserHeader.jsx';
+import { UserDescription } from '../components/UserDescription';
+import { RelatedUserPost } from '../components/RelatedUserPost';
 
 export function User() {
+  const [userId, setUserId] = useState('');
+  const [data, setData] = useState([]);
+  
+  useEffect(()=>{
+    const [_, id] = window.location.href.split('=');
+    fetch(`http://localhost:3000/api/v1/users/${id}`)
+      .then((res)=>res.json())
+      .then((dataApi)=>{
+        setData(dataApi);
+        console.log({dataApi});
+      })
+    }, []);
   return (
     <div className='User'>
-      <UserHeader />
+      <UserHeader username={data.username} />
+      <UserDescription 
+      name={data.name} 
+      lastName={data.lastName} 
+      username={data.username} 
+      description={data.description}/>
+      <h2 className='related-post-title'>Related Posts:</h2>
+      {data.posts && data.posts.map((item)=>(
+        <RelatedUserPost key={item.id} data={item}/>
+      ))} 
     </div>
   );
 }

@@ -1,0 +1,22 @@
+.UserDescription {
+  width: 100%;
+  background-color: var(--light-violet);
+  border-radius: 16px;
+  padding: 10px;
+  margin-bottom: 35px;
+}
+
+.UserDescription ul{
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+.UserDescription ul li {
+  line-height: 25px;
+  color: var(--letter-color-violet);
+}
+.UserDescription ul li span,
+.UserDescription ul li p{
+  line-height:normal;
+  color: var(--light-gray);
+}

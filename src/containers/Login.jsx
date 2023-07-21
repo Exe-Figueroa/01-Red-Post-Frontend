@@ -15,7 +15,7 @@ export function Login() {
         <input type="text" placeholder='Username/Email' className='input'/>
           
         <div className="container-input-logo">
-          <input type="text" placeholder='Password' className='input'/>
+          <input type={eye?"password":"eye"} placeholder='Password' className='input'/>
           {eye?
           <FaEyeSlash className='eye' onClick={toggleEye}/>
           :

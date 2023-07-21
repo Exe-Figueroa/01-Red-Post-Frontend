@@ -1,3 +1,9 @@
 .User {
-  padding: 17px 10px;
+  padding: 17px 13px;
+}
+
+.related-post-title{
+  color: var(--letter-color-violet);
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }

@@ -1,7 +1,9 @@
 :root{
   --background-violet: #4F46E5;
   --light-violet: rgba(79, 70, 229, 0.20);
-  --gray: rgba(0, 0, 0, 0.60);
+  --gray: rgba(0, 0, 0, 0.70);
+  --light-gray: rgba(0, 0, 0, 0.60);
+  --letter-color-violet: rgba(79, 70, 229, 0.70);
 }
 
 *{
@@ -14,4 +16,19 @@ html{
 }
 body {
   padding-bottom: 40px;
+}
+
+::-webkit-scrollbar {
+  width: 5px; 
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--background-violet); 
+  border-radius: 6px;
+}
+
+
+::-webkit-scrollbar-track {
+  background-color: #fff;
 }

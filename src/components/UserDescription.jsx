@@ -1,11 +1,21 @@
 import React from 'react';
 
-function UserDescription(props) {
+import '../styles/UserDescription.css';
+
+
+export function UserDescription({name, lastName, username, description}) {
   return (
-    <div>
-      
+    <div className='UserDescription'>
+      <ul>
+        <li>Name:  <span>{name}</span></li>
+        <li>Last name:  <span>{lastName}</span></li>
+        <li>Username:  <span>{username}</span></li>
+        <li>Description:  
+          {description?<p>{description}</p>:null}
+        </li>
+      </ul>
     </div>
   );
 }
 
-export default UserDescription;
+
