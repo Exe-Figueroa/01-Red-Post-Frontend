@@ -9,6 +9,7 @@ import { VscGithub } from 'react-icons/vsc';
 
 import '../styles/FooterMenu.css';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export function FooterMenu() {
   const [verify, setVerify] = useState(false);
@@ -25,14 +26,14 @@ export function FooterMenu() {
           <PiNotePencilThin className='icon'/>
           Posts
         </div>
-        <div className="icon-container home">
+        <Link to={'/'} className="icon-container home">
           <CiHome className='icon'/>
           Home
-        </div>
-        <div className="icon-container">
+        </Link>
+        <Link to={'https://github.com/Exe-Figueroa'} className="icon-container">
           <VscGithub className='icon'/>
           GitHub
-        </div>
+        </Link>
       </nav>
     </div>
   </>

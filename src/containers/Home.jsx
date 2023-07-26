@@ -8,23 +8,19 @@ const socket = io('http://localhost:3000');
 
 export function Home() {
   const [data, setData] = useState([]);
-  const [connect, setConnect] = useState(false);
   useEffect(() => {
     fetch('http://localhost:3000/api/v1/posts/')
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
+    .then((response) => response.json())
+    .then((data) => {
+      setData(data);
+    });
+    socket.on('connect', () => {
+      console.log('conected');
+      socket.on('posts', (postData) => {
+        console.log('Received posts:', postData);
+        setData((prevData) => [...prevData, postData]); 
       });
-
-      socket.on('connect', () => {
-        setConnect(true);
-        console.log('conected');
-        socket.on('posts', (postData) => {
-          console.log('Received posts:', postData);
-          setData((prevData) => [...prevData, postData]); 
-        });
-      });
-
+    });
   }, []);
 
 

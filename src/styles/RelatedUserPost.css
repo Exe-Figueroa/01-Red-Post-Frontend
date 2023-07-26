@@ -6,6 +6,7 @@
   padding: 10px;
   position: relative;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .RelatedUserPost h2 {

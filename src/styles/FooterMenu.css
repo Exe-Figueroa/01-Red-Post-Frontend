@@ -53,6 +53,7 @@
   margin-left: 7px;
 }
 .icon-container {
+  text-decoration: none;
   font-size: 1.5rem;
   color: #fff;
   display: flex;

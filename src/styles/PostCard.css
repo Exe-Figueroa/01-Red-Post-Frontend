@@ -5,6 +5,7 @@
   padding: 21px 10px 10px 10px;
   border-radius: 16px;
   background: var(--light-violet);
+  cursor: pointer;
 }
 .PostCard .contentCard h3{
   margin-bottom: 10px;

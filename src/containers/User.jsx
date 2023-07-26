@@ -15,7 +15,6 @@ export function User() {
       .then((res)=>res.json())
       .then((dataApi)=>{
         setData(dataApi);
-        console.log({dataApi});
       })
     }, []);
   return (

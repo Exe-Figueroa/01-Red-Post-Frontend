@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Link} from 'react-router-dom';
+
 import "./../styles/UserHeader.css";
 
 import {BsArrowLeftShort} from 'react-icons/bs'
@@ -7,7 +9,9 @@ import {BsArrowLeftShort} from 'react-icons/bs'
 export function UserHeader({username}) {
   return (
     <div className='UserHeader'>
-      <BsArrowLeftShort className='arrow-back'/>
+      <Link to={'/'}>
+        <BsArrowLeftShort className='arrow-back'/>
+      </Link>
       <h1 className='username'>{username}</h1>
     </div>
   );
