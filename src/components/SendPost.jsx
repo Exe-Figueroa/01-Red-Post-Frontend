@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/SendPost.css';
 
-export function SendPost(props) {
+export function SendPost() {
   return (
     <div className='SendPost'>
       <form className="card-container">

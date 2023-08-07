@@ -2,11 +2,12 @@ div.SendPost {
   width: 100%;
   height: calc(100vh);
   top: 0;
-  position: absolute;
-  background: black;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.217);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 div.SendPost .card-container{
@@ -42,9 +43,34 @@ div.SendPost .card-container textarea.post-content {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
   border: none;
   color: rgba(0, 0, 0, 0.6);
-  margin-bottom: 18px;
   font-size: 1.6rem;
 }
 div.SendPost .card-container textarea.post-content:focus{
   outline-color: rgba(0, 0, 0, 0.25);
+}
+div.SendPost .card-container .validator-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+div.SendPost .card-container .validator-container button {
+  width: 250px;
+  height: 38px;
+  border-radius: 16px;
+  border: none;
+  font-size: 1.6rem;
+  margin-top: 15px;
+}
+
+div.SendPost .card-container .validator-container button.post{
+  color: #fff;
+  background: var(--background-violet);
+}
+div.SendPost .card-container .validator-container button.cancel{
+  color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  background: none;
 }
