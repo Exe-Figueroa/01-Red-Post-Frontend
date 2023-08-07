@@ -18,7 +18,7 @@ export function Register() {
         <input type="text" placeholder='Email' className='input'/>
           
         <div className="container-input-password">
-          <input type={eye?"text":"password"} placeholder='Password' className='input'/>
+          <input type={eye? "text":"password"} placeholder='Password' className='input'/>
           {eye?
           <FaEyeSlash className='eye' onClick={toggleEye}/>
           :
@@ -26,8 +26,7 @@ export function Register() {
           }
         </div>
         <div className="container-input-password">
-          <input type={eye?"text":"password"} placeholder='Check Password'
-          value="" className='input'/>
+          <input type={eye? "text":"password"} placeholder='Check Password' className='input'/>
           {eye?
           <FaEyeSlash className='eye' onClick={toggleEye}/>
           :

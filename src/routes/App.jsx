@@ -9,18 +9,20 @@ import {Login} from '../containers/Login.jsx';
 import { FooterMenu } from '../components/FooterMenu.jsx';
 import { Register } from "../containers/Register.jsx";
 import { User } from "../containers/User.jsx";
+import { SendPost } from "../components/SendPost.jsx";
 
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      {/* <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/*" element={<Home />} />
         <Route path="/user" element={<User />} />
       </Routes>
-      <FooterMenu/>
+      <FooterMenu/> */}
+      <SendPost />
     </BrowserRouter>
   );
 }

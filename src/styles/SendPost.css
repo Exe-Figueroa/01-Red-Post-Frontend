@@ -1,0 +1,50 @@
+div.SendPost {
+  width: 100%;
+  height: calc(100vh);
+  top: 0;
+  position: absolute;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.SendPost .card-container{
+  width: 300px;
+  height: 400px;
+  background: #fff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 18px;
+  align-items: center;
+}
+div.SendPost .card-container input.title {
+  width: 250px;
+  height: 50px;
+  padding: 15px ;
+  border-radius: 16px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  border: none;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 18px;
+  font-size: 1.6rem;
+}
+div.SendPost .card-container input.title:focus{
+  outline-color: rgba(0, 0, 0, 0.25);
+}
+
+div.SendPost .card-container textarea.post-content {
+  width: 250px;
+  min-height: 180px;
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  border: none;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 18px;
+  font-size: 1.6rem;
+}
+div.SendPost .card-container textarea.post-content:focus{
+  outline-color: rgba(0, 0, 0, 0.25);
+}
