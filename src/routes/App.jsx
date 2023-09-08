@@ -9,7 +9,6 @@ import {Login} from '../containers/Login.jsx';
 import { FooterMenu } from '../components/FooterMenu.jsx';
 import { Register } from "../containers/Register.jsx";
 import { User } from "../containers/User.jsx";
-import { SendPost } from "../components/SendPost.jsx";
 
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
         <Route path="/user" element={<User />} />
       </Routes>
       <FooterMenu/>
-      <SendPost />
+      
     </BrowserRouter>
   );
 }
