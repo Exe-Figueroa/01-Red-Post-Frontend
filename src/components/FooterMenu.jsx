@@ -1,17 +1,16 @@
 import React from 'react';
 
-import { IoIosArrowUp } from 'react-icons/io';
 import { IoIosArrowDown } from 'react-icons/io';
 import { PiNotePencilThin } from 'react-icons/pi';
 import { CiHome } from 'react-icons/ci';
 import { VscGithub } from 'react-icons/vsc';
-
+import { IoAddCircleOutline } from 'react-icons/io5';
 
 import '../styles/FooterMenu.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export function FooterMenu() {
+export function FooterMenu({toggleSendPost}) {
   const [verify, setVerify] = useState(false);
   function handleFooter(){
     setVerify(!verify)
@@ -22,9 +21,11 @@ export function FooterMenu() {
         {verify? <IoIosArrowDown className='arrowUp'/> : <IoIosArrowDown className='arrowDown'/> }
       </div>
       <nav  className='FooterMenu-icons-container'>
-        <div className="icon-container">
-          <PiNotePencilThin className='icon'/>
-          Posts
+        <div
+          onClick={()=>toggleSendPost(true)}
+        className="icon-container">
+          <IoAddCircleOutline className='icon'/>
+          Post
         </div>
         <Link to={'/'} className="icon-container home">
           <CiHome className='icon'/>

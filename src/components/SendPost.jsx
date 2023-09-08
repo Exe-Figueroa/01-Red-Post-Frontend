@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import '../styles/SendPost.css';
 
-export function SendPost({ejemplo}) {
+export function SendPost({toggleSendPost}) {
   const [dataState, setDataState] = useState({
-    userId: 1,
+    userId: 2,
     title: '',
     content: ''
   });
@@ -26,22 +26,23 @@ export function SendPost({ejemplo}) {
       title:'', 
       content:''
     });
+    toggleSendPost(false);
   };
   async function onSubmit(e) {
     e.preventDefault();
     const response = await fetch('http://localhost:3000/api/v1/posts', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json', // Define el tipo de contenido
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(dataState)
     });
+
     
   };
 
   return (
     <div className='SendPost'>
-      {ejemplo}
       <form 
       className="card-container"
       onSubmit={onSubmit}

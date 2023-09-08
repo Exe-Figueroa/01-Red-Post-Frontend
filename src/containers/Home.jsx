@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import { Header } from '../components/Header.jsx';
 import { PostCard } from '../components/PostCard';
-import { SendPost } from '../components/SendPost.jsx';
 import '../styles/Home.css';
 
 const socket = io('http://localhost:3000');
 
 export function Home() {
   const [data, setData] = useState([]);
+  
   useEffect(() => {
     fetch('http://localhost:3000/api/v1/posts/')
     .then((response) => response.json())
@@ -23,8 +23,8 @@ export function Home() {
       });
     });
   }, []);
-
-
+  
+  
   return (
     <div className='Home'>
       <Header />
@@ -39,7 +39,6 @@ export function Home() {
             user={item.user.username}
           />
         ))}
-        <SendPost />
       </main>
     </div>
   );

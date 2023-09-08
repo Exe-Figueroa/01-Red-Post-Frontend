@@ -12,6 +12,10 @@
 .RelatedUserPost h2 {
   color: var(--gray);
   font-size: 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
 }
 .RelatedUserPost span{
   font-size: 1.3rem;

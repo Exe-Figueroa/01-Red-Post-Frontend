@@ -9,9 +9,15 @@ import {Login} from '../containers/Login.jsx';
 import { FooterMenu } from '../components/FooterMenu.jsx';
 import { Register } from "../containers/Register.jsx";
 import { User } from "../containers/User.jsx";
+import { SendPost } from "../components/SendPost.jsx";
 
 
 function App() {
+  const [seeSendPost, setSeeSendPost] = useState(false);
+  function toggleSendPost(isActive) {
+    setSeeSendPost(isActive);
+  };
+  
   return (
     <BrowserRouter>
       <Routes>
@@ -20,8 +26,12 @@ function App() {
         <Route path="/*" element={<Home />} />
         <Route path="/user" element={<User />} />
       </Routes>
-      <FooterMenu/>
-      
+      {seeSendPost && <SendPost 
+        toggleSendPost={toggleSendPost}
+        />}
+      <FooterMenu 
+        toggleSendPost={toggleSendPost}
+      />
     </BrowserRouter>
   );
 }

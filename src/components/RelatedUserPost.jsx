@@ -1,17 +1,9 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
-import '../styles/RelatedUserPost.css'
+import '../styles/RelatedUserPost.css';
+
+
 export function RelatedUserPost({data}) {
-  const [title, setTitle] = useState(data.title);
-
-  useEffect(()=>{
-    if (title.length >=45) {
-      const titleShort = title.slice(0,44) + '...'
-      setTitle(titleShort);
-    }
-  });
 
   function cleanDate (date) {
     const [a, b] = date.split('T')
@@ -19,8 +11,32 @@ export function RelatedUserPost({data}) {
   }
   return (
     <div className='RelatedUserPost'>
-      <h2>{title} </h2>
+      <h2>{data.title} </h2>
       <span>{cleanDate(data.createdAt)}</span>
     </div>
   );
 }
+
+
+[
+  {
+    title: 'tituloasdabsdlalsd1',
+    description: 'jadbsljbdalsjdbajlsdbajlsbdlajsndoasbdolasodilasodi1',
+    year: 2002
+  },
+  {
+    title: 'tituloasdabsdlalsd2',
+    description: 'jadbsljbdalsjdbajlsdbajlsbdlajsndoasbdolasodilasodi2',
+    year: 2005
+  },
+  {
+    title: 'title 3 lalala',
+    description: 'description asmdklasdka',
+    year: 2006
+  },
+  {
+    title: 'tituloasdabsdlalsd1',
+    description: 'jadbsljbdalsjdbajlsdbajlsbdlajsndoasbdolasodilasodi1',
+    year: 2023
+  },
+]
