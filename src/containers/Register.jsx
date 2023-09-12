@@ -3,6 +3,7 @@ import '../styles/Register.css';
 
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { base_url } from '../../config/config';
 
 export function Register() {
   const [eye, setEye] = useState(true);
@@ -19,7 +20,7 @@ export function Register() {
   async function onSubmit(e) {
     e.preventDefault();
     try {
-      const response = fetch('http://localhost:3000/api/v1/users', {
+      const response = fetch(`${base_url}/users`, {
       method:'POST',
       headers: {
         'Content-Type': 'application/json'

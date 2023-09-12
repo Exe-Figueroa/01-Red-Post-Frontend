@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/SendPost.css';
+import { base_url } from '../../config/config';
 
 export function SendPost({toggleSendPost}) {
   const [dataState, setDataState] = useState({
@@ -28,15 +29,23 @@ export function SendPost({toggleSendPost}) {
     });
     toggleSendPost(false);
   };
-  async function onSubmit(e) {
+  function onSubmit(e) {
     e.preventDefault();
-    const response = await fetch('http://localhost:3000/api/v1/posts', {
+    fetch(`${base_url}/posts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(dataState)
-    });
+    })
+    .then(res=>{
+      console.log(res)
+      alert('se envió en teoría')
+    })
+    .catch(e => {
+      console.error(e)
+      alert('error de envío')
+    })
 
     
   };

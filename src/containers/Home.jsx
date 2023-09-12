@@ -3,25 +3,27 @@ import { io } from 'socket.io-client';
 import { Header } from '../components/Header.jsx';
 import { PostCard } from '../components/PostCard';
 import '../styles/Home.css';
+import { base_url } from '../../config/config.js';
+// const socket = io('http://localhost:3000');
 
-const socket = io('http://localhost:3000');
 
 export function Home() {
   const [data, setData] = useState([]);
   
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/posts/')
+    fetch(`${base_url}/posts/`)
     .then((response) => response.json())
     .then((data) => {
       setData(data);
-    });
-    socket.on('connect', () => {
-      console.log('conected');
-      socket.on('posts', (postData) => {
-        console.log('Received posts:', postData);
-        setData((prevData) => [...prevData, postData]); 
-      });
-    });
+    })
+    .catch(e=>console.log(e));
+    // socket.on('connect', () => {
+    //   console.log('conected');
+    //   socket.on('posts', (postData) => {
+    //     console.log('Received posts:', postData);
+    //     setData((prevData) => [...prevData, postData]); 
+    //   });
+    // });
   }, []);
   
   

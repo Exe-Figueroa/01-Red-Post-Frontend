@@ -4,6 +4,7 @@ import '../styles/User.css'
 import { UserHeader } from '../components/UserHeader.jsx';
 import { UserDescription } from '../components/UserDescription';
 import { RelatedUserPost } from '../components/RelatedUserPost';
+import { base_url } from '../../config/config';
 
 export function User() {
   const [userId, setUserId] = useState('');
@@ -11,7 +12,7 @@ export function User() {
   
   useEffect(()=>{
     const [_, id] = window.location.href.split('=');
-    fetch(`http://localhost:3000/api/v1/users/${id}`)
+    fetch(`${base_url}/users/${id}`)
       .then((res)=>res.json())
       .then((dataApi)=>{
         setData(dataApi);
