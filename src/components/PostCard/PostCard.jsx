@@ -1,11 +1,11 @@
-import {React, useEffect, useState} from 'react';
+import { React } from 'react';
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import '../styles/PostCard.css';
 
-export function PostCard( {title, content, date, user, id}) {
-  function cleanDate (date) {
+export function PostCard({ title, content, date, user, id }) {
+  function cleanDate(date) {
     const [a, b] = date.split('T')
     return a;
   }

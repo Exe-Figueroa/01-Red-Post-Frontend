@@ -4,7 +4,7 @@ import '../styles/User.css'
 import { UserHeader } from '../components/UserHeader.jsx';
 import { UserDescription } from '../components/UserDescription';
 import { RelatedUserPost } from '../components/RelatedUserPost';
-import { base_url } from '../../config/config';
+import { base_url } from '../../../config/config';
 
 export function User() {
   const [userId, setUserId] = useState('');

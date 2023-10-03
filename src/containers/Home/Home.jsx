@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import { Header } from '../components/Header.jsx';
 import { PostCard } from '../components/PostCard';
 import '../styles/Home.css';
-import { base_url } from '../../config/config.js';
+import { base_url } from '../../../config/config.js';
 // const socket = io('http://localhost:3000');
 
 

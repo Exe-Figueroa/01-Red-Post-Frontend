@@ -3,7 +3,7 @@ import '../styles/Register.css';
 
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { base_url } from '../../config/config';
+import { base_url } from '../../../config/config';
 
 export function Register() {
   const [eye, setEye] = useState(true);

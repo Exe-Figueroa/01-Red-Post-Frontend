@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/SendPost.css';
-import { base_url } from '../../config/config';
+import { base_url } from '../../../config/config';
 
 export function SendPost({toggleSendPost}) {
   const [dataState, setDataState] = useState({
