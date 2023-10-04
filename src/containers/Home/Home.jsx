@@ -1,17 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 // import { io } from 'socket.io-client';
 import { Header } from '../../components/Header/Header.jsx';
 import { PostCard } from '../../components/PostCard/PostCard.jsx';
 import './Home.css';
 import { base_url } from '../../../config/config.js';
+import { DataContext } from '../../DataContext/DataContextProvider.jsx';
 // const socket = io('http://localhost:3000');
 
 
 export function Home() {
   const [data, setData] = useState([]);
-
+  const { user } = useContext(DataContext);
   useEffect(() => {
-    fetch(`${base_url}/posts/`)
+    fetch(`${base_url}/posts/`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
+    })
       .then((response) => response.json())
       .then((data) => {
         setData(data);

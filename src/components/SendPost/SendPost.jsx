@@ -39,7 +39,7 @@ export function SendPost({toggleSendPost}) {
       body: JSON.stringify(dataState)
     })
     .then(res=>{
-      console.log(res)
+
       alert('se envió en teoría')
     })
     .catch(e => {

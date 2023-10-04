@@ -55,17 +55,7 @@ form.login-container {
   align-items: center;
 }
 
-.buttons-container input.login-btn{
-  width: 200px;
-  height: 38px;
-  border: none;
-  border-radius: 16px;
-  color: #fff;
-  background: var(--background-violet);
-  font-size: 1.6rem;
-  cursor: pointer;
-}
-.buttons-container button.register-btn{
+.Login .buttons-container button.register-btn{
   width: 200px;
   height: 38px;
   border: none;
@@ -75,5 +65,15 @@ form.login-container {
   font-size: 1.6rem;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
   margin-top: 35px;
+  cursor: pointer;
+}
+.Login .buttons-container button.login-btn{
+  width: 200px;
+  height: 38px;
+  border: none;
+  border-radius: 16px;
+  color: #fff;
+  background: var(--background-violet);
+  font-size: 1.6rem;
   cursor: pointer;
 }
