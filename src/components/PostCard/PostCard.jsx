@@ -2,7 +2,7 @@ import { React } from 'react';
 
 import { Link } from 'react-router-dom'
 
-import '../styles/PostCard.css';
+import './PostCard.css';
 
 export function PostCard({ title, content, date, user, id }) {
   function cleanDate(date) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/UserDescription.css';
+import './UserDescription.css';
 
 
 export function UserDescription({name, lastName, username, description}) {

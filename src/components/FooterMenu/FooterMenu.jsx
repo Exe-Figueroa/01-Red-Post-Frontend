@@ -6,7 +6,7 @@ import { CiHome } from 'react-icons/ci';
 import { VscGithub } from 'react-icons/vsc';
 import { IoAddCircleOutline } from 'react-icons/io5';
 
-import '../styles/FooterMenu.css';
+import './FooterMenu.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 

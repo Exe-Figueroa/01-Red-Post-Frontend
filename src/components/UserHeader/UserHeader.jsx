@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Link} from 'react-router-dom';
 
-import "./../styles/UserHeader.css";
+import "./UserHeader.css";
 
 import {BsArrowLeftShort} from 'react-icons/bs'
 

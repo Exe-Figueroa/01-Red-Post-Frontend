@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/RelatedUserPost.css';
+import './RelatedUserPost.css';
 
 
 export function RelatedUserPost({data}) {
