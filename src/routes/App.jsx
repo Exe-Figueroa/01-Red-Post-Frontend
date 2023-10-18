@@ -33,7 +33,6 @@ function App() {
             element={
               <AuthRoute>
                 <Home />
-
               </AuthRoute>
             } />
           <Route path="/user"

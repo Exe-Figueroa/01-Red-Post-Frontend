@@ -7,7 +7,11 @@ const DataContext = createContext();
 
 function DataContextProvider({ children }) {
   //States
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    username: '',
+    password: '',
+    token: ''
+  });
   //Navigation and Auth of Users 
   const navigate = useNavigate();
 
@@ -55,6 +59,6 @@ function AuthRoute({ children }) {
     return <Navigate to='/login' />
   }
   return children
-}
+};
 
 export { DataContextProvider, DataContext, AuthRoute };
