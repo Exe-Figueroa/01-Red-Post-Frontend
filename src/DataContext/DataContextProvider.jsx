@@ -31,7 +31,7 @@ function DataContextProvider({ children }) {
       navigate('/');
       setUser(data);
     } catch (error) {
-      alert({ message: 'Ocurrió un error: ', error })
+      alert('Ocurrió un error')
     }
 
   };

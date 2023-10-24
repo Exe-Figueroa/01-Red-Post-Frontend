@@ -34,6 +34,7 @@ export function Login() {
           type="text"
           placeholder='Username/Email'
           className='input'
+          autoComplete='given-name'
           onChange={(e) => setLoginData({ ...loginData, username: e.target.value })}
         />
 

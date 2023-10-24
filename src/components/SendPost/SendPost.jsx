@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import './SendPost.css';
-import { base_url } from '../../../config/config';
+import React, { useContext, useState } from 'react';
 
-export function SendPost({toggleSendPost}) {
+import { base_url } from '../../../config/config';
+import { DataContext } from '../../DataContext/DataContextProvider';
+
+import './SendPost.css';
+
+export function SendPost({ toggleSendPost }) {
+  const { user } = useContext(DataContext);
   const [dataState, setDataState] = useState({
     userId: 2,
     title: '',
@@ -11,21 +15,21 @@ export function SendPost({toggleSendPost}) {
 
   function titleOnChange(value) {
     setDataState({
-      ...dataState, 
-      title : value
+      ...dataState,
+      title: value
     });
   };
   function contentOnChange(value) {
     setDataState({
-      ...dataState, 
-      content : value
+      ...dataState,
+      content: value
     });
   };
 
   function onCancel() {
     setDataState({
-      title:'', 
-      content:''
+      title: '',
+      content: ''
     });
     toggleSendPost(false);
   };
@@ -35,51 +39,51 @@ export function SendPost({toggleSendPost}) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify(dataState)
     })
-    .then(res=>{
+      .then(res => {
+        alert('se envió en teoría')
+      })
+      .catch(e => {
+        console.error(e)
+        alert('error de envío')
+      })
 
-      alert('se envió en teoría')
-    })
-    .catch(e => {
-      console.error(e)
-      alert('error de envío')
-    })
 
-    
   };
 
   return (
     <div className='SendPost'>
-      <form 
-      className="card-container"
-      onSubmit={onSubmit}
+      <form
+        className="card-container"
+        onSubmit={onSubmit}
       >
-        <input 
-        type="text" 
-        placeholder='Title' 
-        className="title" 
-        value={dataState.title}
-        onChange={(e)=>titleOnChange(e.target.value)}
+        <input
+          type="text"
+          placeholder='Title'
+          className="title"
+          value={dataState.title}
+          onChange={(e) => titleOnChange(e.target.value)}
         />
-        <textarea 
-        value={dataState.content}
-        placeholder='Post content' 
-        className='post-content'
-        onChange={(e)=>contentOnChange(e.target.value)}
+        <textarea
+          value={dataState.content}
+          placeholder='Post content'
+          className='post-content'
+          onChange={(e) => contentOnChange(e.target.value)}
         ></textarea>
         <div className='validator-container'>
-          <button 
-          type='submit' 
-          className='post'
+          <button
+            type='submit'
+            className='post'
           >
             Post
           </button>
-          <button 
-          type='button' 
-          className='cancel'
-          onClick={onCancel}
+          <button
+            type='button'
+            className='cancel'
+            onClick={onCancel}
           >
             Cancel
           </button>
