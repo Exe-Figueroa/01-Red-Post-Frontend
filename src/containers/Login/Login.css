@@ -55,7 +55,7 @@ form.login-container {
   align-items: center;
 }
 
-.Login .buttons-container button.register-btn{
+.Login .buttons-container a.register-btn{
   width: 200px;
   height: 38px;
   border: none;
@@ -66,6 +66,10 @@ form.login-container {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
   margin-top: 35px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 .Login .buttons-container button.login-btn{
   width: 200px;

@@ -56,7 +56,7 @@
   align-items: center;
 }
 
-.register .buttons-container input.register-btn{
+.Register .buttons-container button.register-btn{
   width: 200px;
   height: 38px;
   border: none;
@@ -65,7 +65,7 @@
   background: var(--background-violet);
   font-size: 1.6rem;
 }
-.regiter .buttons-container button.login-btn{
+.Register .buttons-container a.login-btn{
   width: 200px;
   height: 38px;
   border: none;
@@ -77,4 +77,8 @@
   cursor: pointer;
   cursor: pointer;
   margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }

@@ -10,7 +10,8 @@ function DataContextProvider({ children }) {
   const [user, setUser] = useState({
     username: '',
     password: '',
-    token: ''
+    userId: null,
+    token: '',
   });
   //Navigation and Auth of Users 
   const navigate = useNavigate();
@@ -28,8 +29,8 @@ function DataContextProvider({ children }) {
         })
       });
       const data = await res.json();
-      navigate('/');
       setUser(data);
+      navigate('/');
     } catch (error) {
       alert('Ocurrió un error')
     }

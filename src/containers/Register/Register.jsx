@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Register.css';
 
 import { FaEye } from "react-icons/fa";
@@ -29,7 +30,7 @@ export function Register() {
       });
       alert('se envió')
     } catch (error) {
-      alert(error);
+      alert('no se envió');
       console.error(error)
     };
   };
@@ -115,8 +116,8 @@ export function Register() {
         </div> */}
 
         <div className="buttons-container">
-          <input type="submit" value="Register" className="register-btn" />
-          <button className="login-btn">Login</button>
+          <button className='register-btn' type='submit'>Register</button>
+          <Link to='/login' className="login-btn">Login</Link>
         </div>
       </form>
     </div>

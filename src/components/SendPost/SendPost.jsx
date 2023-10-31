@@ -8,7 +8,7 @@ import './SendPost.css';
 export function SendPost({ toggleSendPost }) {
   const { user } = useContext(DataContext);
   const [dataState, setDataState] = useState({
-    userId: 2,
+    userId: user.userId,
     title: '',
     content: ''
   });

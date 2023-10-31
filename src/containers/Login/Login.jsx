@@ -1,4 +1,5 @@
 import { React, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
 
 import { FaEye } from "react-icons/fa";
@@ -56,7 +57,7 @@ export function Login() {
         <div className="buttons-container">
           {/* <button type="submit" className="login-btn">Login<button/> */}
           <button className='login-btn' type='submit'>Login</button>
-          <button className="register-btn">Register</button>
+          <Link to='/register' className="register-btn">Register</Link>
         </div>
       </form>
     </div>
