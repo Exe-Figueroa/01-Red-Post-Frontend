@@ -10,7 +10,8 @@ import { IoAddCircleOutline } from 'react-icons/io5';
 import './FooterMenu.css';
 
 export function FooterMenu({ toggleSendPost }) {
-  const { user } = useContext(DataContext)
+  const { auth: {user} } = useContext(DataContext)
+  
   const [verify, setVerify] = useState(false);
   function handleFooter() {
     setVerify(!verify)

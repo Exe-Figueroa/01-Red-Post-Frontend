@@ -6,7 +6,7 @@ import { DataContext } from '../../DataContext/DataContextProvider';
 import './SendPost.css';
 
 export function SendPost({ toggleSendPost }) {
-  const { user } = useContext(DataContext);
+  const { auth: { user }, successRequest, failureRequest } = useContext(DataContext);
   const [dataState, setDataState] = useState({
     userId: user.userId,
     title: '',
@@ -44,14 +44,18 @@ export function SendPost({ toggleSendPost }) {
       body: JSON.stringify(dataState)
     })
       .then(res => {
-        alert('se envió en teoría')
+        console.log(res);
+        if (res.ok) {
+          successRequest('The post was sent correctly.')
+        } else {
+          failureRequest('Error sending the post.')
+        }
+        onCancel();
       })
       .catch(e => {
         console.error(e)
-        alert('error de envío')
+        onCancel();
       })
-
-
   };
 
   return (

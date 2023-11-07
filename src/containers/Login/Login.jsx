@@ -14,7 +14,7 @@ export function Login() {
     password: '',
   });
   //UseContext 
-  const { login } = useContext(DataContext);
+  const { auth: {login} } = useContext(DataContext);
 
   //Functions
   function toggleEye() {

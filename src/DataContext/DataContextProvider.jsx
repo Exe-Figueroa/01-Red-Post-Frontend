@@ -2,6 +2,8 @@ import React, { createContext, useContext, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { base_url } from '../../config/config';
 
+import Swal from 'sweetalert2'
+
 const DataContext = createContext();
 
 
@@ -39,18 +41,41 @@ function DataContextProvider({ children }) {
   const logout = () => {
     setUser(null);
     navigate('/login');
-  }
+  };
+
+  //Success && Failure Request
+  function successRequest(message) {
+    Swal.fire({
+      title: 'Sent successfully!',
+      text: message,
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    });
+  };
+  function failureRequest(message) {
+    Swal.fire({
+      title: 'Failed to send!',
+      text: message,
+      icon: 'error',
+      confirmButtonText: 'Ok'
+    });
+  };
+
   //Other
   const auth = { user, login, logout }
   return (
-    <DataContext.Provider value={auth}>
+    <DataContext.Provider value={{
+      auth, 
+      successRequest, 
+      failureRequest,
+    }}>
       {children}
     </DataContext.Provider>
   );
 }
 
 function useAuth() {
-  const auth = useContext(DataContext);
+  const { auth } = useContext(DataContext);
   return auth;
 };
 
