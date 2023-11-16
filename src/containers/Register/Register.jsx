@@ -1,5 +1,7 @@
-import { React, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { DataContext } from '../../DataContext/DataContextProvider';
+
 import './Register.css';
 
 import { FaEye } from "react-icons/fa";
@@ -7,28 +9,47 @@ import { FaEyeSlash } from "react-icons/fa";
 import { base_url } from '../../../config/config';
 
 export function Register() {
+  const { failureRequest, successRequest } = useContext(DataContext);
   const [eye, setEye] = useState(true);
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    name: '',
+    lastName: '',
+    username: '',
+    email: '',
+    password: ''
+  });
   function toggleEye() {
     setEye(!eye);
   };
 
   function onChange(id, value) {
-    setData({ ...data, [id]: value });
+    setData((prevData) => ({
+      ...prevData,
+      [id]: value
+    }));
     console.log(data);
   };
 
-  async function onSubmit(e) {
+  function onSubmit(e) {
     e.preventDefault();
+    console.log('submit');
     try {
-      const response = fetch(`${base_url}/users`, {
+      fetch(`${base_url}/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-      });
-      alert('se envió')
+      })
+        .then(async (res) => {
+          const data = await res.json();
+          if (res.ok) {
+            successRequest('Successfully registered user')
+          } else if (!res.ok && data.message) {
+            failureRequest(data.message)
+          }
+        })
+
     } catch (error) {
       alert('no se envió');
       console.error(error)
