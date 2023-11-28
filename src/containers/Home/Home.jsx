@@ -30,8 +30,6 @@ export function Home() {
       socket.on('connect', () => {
         socket.on('posts', (postData) => {
           setData((prevData) => [...prevData, postData]); 
-          // setData((prevData) => [...prevData, ...(Array.isArray(postData) ? postData : [postData])]);
-  
         });
       });
     }, []);
@@ -54,4 +52,4 @@ export function Home() {
       </main>
     </div>
   );
-}
+};

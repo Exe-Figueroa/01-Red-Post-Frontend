@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 
 //views
 import { Home } from '../containers/Home/Home.jsx';
@@ -20,10 +20,10 @@ function App() {
   const [seeSendPost, setSeeSendPost] = useState(false);
   function toggleSendPost(isActive) {
     setSeeSendPost(isActive);
-  };
 
+  };
   return (
-    <BrowserRouter>
+    <HashRouter>
       <DataContextProvider>
 
         <Routes>
@@ -49,7 +49,7 @@ function App() {
           toggleSendPost={toggleSendPost}
         />
       </DataContextProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

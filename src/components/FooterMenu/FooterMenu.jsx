@@ -28,16 +28,16 @@ export function FooterMenu({ toggleSendPost }) {
       </div>
       <nav className='FooterMenu-icons-container'>
         <div
-          onClick={() => toggleSendPost(true)}
+          onClick={() =>{handleFooter(); toggleSendPost(true)}}
           className="icon-container">
           <IoAddCircleOutline className='icon' />
           Post
         </div>
-        <Link to={'/'} className="icon-container home">
+        <Link to={'/'} onClick={handleFooter} className="icon-container home">
           <CiHome className='icon' />
           Home
         </Link>
-        <Link to={'https://github.com/Exe-Figueroa'} className="icon-container">
+        <Link to={'https://github.com/Exe-Figueroa'} onClick={handleFooter} className="icon-container">
           <VscGithub className='icon' />
           GitHub
         </Link>
