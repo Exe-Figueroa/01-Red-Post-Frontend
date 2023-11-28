@@ -28,9 +28,7 @@ export function Home() {
 
       const socket = io(socket_url);
       socket.on('connect', () => {
-        console.log('conected');
         socket.on('posts', (postData) => {
-          console.log('Received posts:', postData);
           setData((prevData) => [...prevData, postData]); 
         });
       });
