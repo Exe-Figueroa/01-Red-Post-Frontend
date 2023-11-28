@@ -106,7 +106,7 @@ export function Register() {
         <div className="container-input-password">
           <input
             value={data.password}
-            type={eye ? "text" : "password"}
+            type={eye ? "password" : "text"}
             placeholder='Password'
             className='input'
             onChange={(e) => {
