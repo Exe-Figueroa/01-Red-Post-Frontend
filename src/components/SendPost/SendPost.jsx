@@ -44,7 +44,6 @@ export function SendPost({ toggleSendPost }) {
       body: JSON.stringify(dataState)
     })
       .then(res => {
-        console.log(res);
         if (res.ok) {
           successRequest('The post was sent correctly.')
         } else {
@@ -53,7 +52,6 @@ export function SendPost({ toggleSendPost }) {
         onCancel();
       })
       .catch(e => {
-        console.error(e)
         onCancel();
       })
   };
