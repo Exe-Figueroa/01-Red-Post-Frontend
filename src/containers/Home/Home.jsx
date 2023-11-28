@@ -52,4 +52,4 @@ export function Home() {
       </main>
     </div>
   );
-}
+};
