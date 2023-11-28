@@ -1,18 +1,18 @@
 import { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../DataContext/DataContextProvider.jsx';
 
-// import { io } from 'socket.io-client';
+import { io } from 'socket.io-client';
 import { Header } from '../../components/Header/Header.jsx';
 import { PostCard } from '../../components/PostCard/PostCard.jsx';
-import { base_url } from '../../../config/config.js';
+import { base_url, socket_url } from '../../../config/config.js';
 import './Home.css';
 
-// const socket = io('http://localhost:3000');
 
 
 export function Home() {
   const [data, setData] = useState([]);
   const { auth: { user } } = useContext(DataContext);
+  
   useEffect(() => {
     fetch(`${base_url}/posts/`, {
       method: 'GET',
@@ -25,14 +25,18 @@ export function Home() {
         setData(data);
       })
       .catch(e => console.log(e));
-    // socket.on('connect', () => {
-    //   console.log('conected');
-    //   socket.on('posts', (postData) => {
-    //     console.log('Received posts:', postData);
-    //     setData((prevData) => [...prevData, postData]); 
-    //   });
-    // });
-  }, []);
+
+      const socket = io(socket_url);
+      socket.on('connect', () => {
+        console.log('conected');
+        socket.on('posts', (postData) => {
+          console.log('Received posts:', postData);
+          // setData((prevData) => [...prevData, postData]); 
+          setData((prevData) => [...prevData, ...(Array.isArray(postData) ? postData : [postData])]);
+  
+        });
+      });
+    }, []);
 
 
   return (
