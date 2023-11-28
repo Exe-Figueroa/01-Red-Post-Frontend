@@ -31,8 +31,8 @@ export function Home() {
         console.log('conected');
         socket.on('posts', (postData) => {
           console.log('Received posts:', postData);
-          // setData((prevData) => [...prevData, postData]); 
-          setData((prevData) => [...prevData, ...(Array.isArray(postData) ? postData : [postData])]);
+          setData((prevData) => [...prevData, postData]); 
+          // setData((prevData) => [...prevData, ...(Array.isArray(postData) ? postData : [postData])]);
   
         });
       });
