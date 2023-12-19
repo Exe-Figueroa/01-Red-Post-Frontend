@@ -15,10 +15,12 @@ function DataContextProvider({ children }) {
     userId: null,
     token: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
   //Navigation and Auth of Users 
   const navigate = useNavigate();
 
   const login = async (username, password) => {
+    setIsLoading(true);
     try {
       const res = await fetch(`${base_url}/login`, {
         method: 'POST',
@@ -30,13 +32,16 @@ function DataContextProvider({ children }) {
           password
         })
       });
+      if (!res.ok) {
+        throw 'Usuario o contraseña incorrecta'
+      }
       const data = await res.json();
       setUser(data);
       navigate('/');
     } catch (error) {
-      alert('Ocurrió un error')
+      setIsLoading(false);
+      failureRequest(error, 'Operation failure')
     }
-
   };
   const logout = () => {
     setUser(null);
@@ -52,9 +57,9 @@ function DataContextProvider({ children }) {
       confirmButtonText: 'Ok'
     });
   };
-  function failureRequest(message) {
+  function failureRequest(message, login) {
     Swal.fire({
-      title: 'Failed to send!',
+      title: login || 'Failed to send!',
       text: message,
       icon: 'error',
       confirmButtonText: 'Ok'
@@ -68,6 +73,7 @@ function DataContextProvider({ children }) {
       auth, 
       successRequest, 
       failureRequest,
+      isLoading
     }}>
       {children}
     </DataContext.Provider>
