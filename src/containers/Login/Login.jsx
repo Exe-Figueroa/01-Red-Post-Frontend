@@ -35,10 +35,9 @@ export function Login() {
           :
           <form onSubmit={(e) => onSubmit(e)} className="login-container">
             <input
-              type="text"
               placeholder='Username/Email'
               className='input'
-              autoComplete='given-name'
+              autoComplete='on'
               onChange={(e) => setLoginData({ ...loginData, username: e.target.value })}
             />
 

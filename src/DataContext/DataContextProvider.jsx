@@ -24,9 +24,9 @@ function DataContextProvider({ children }) {
 
   // Function to handle user login
   const login = async (username, password) => {
-    setIsLoading(true);
-    verifyUserOrMail(username);
     try {
+      setIsLoading(true);
+      verifyUserOrMail(username);
       let userObject;
       if (loginEndpoint === 'username') {
         userObject = {
@@ -57,7 +57,7 @@ function DataContextProvider({ children }) {
       // Parse the response data and update the user state
       const data = await res.json();
       setUser(data);
-      
+
       // Redirect to the home page
       navigate('/');
     } catch (error) {
@@ -69,24 +69,24 @@ function DataContextProvider({ children }) {
   function verifyUserOrMail(userOrMail) {
     // Regular expression for validating a username
     const userRegex = /^[a-zA-Z0-9_-]{3,16}$/;
-  
+
     // Regular expression for validating an email address
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+
     // Check if the provided value matches the username pattern
     const isUser = userRegex.test(userOrMail);
-  
+
     // Check if the provided value matches the email pattern
     const isEmail = emailRegex.test(userOrMail);
-  
     // Determine the type of input and return a corresponding result
     if (isUser) {
       setLoginEndpoint('username')
-    } else if (isEmail) {
+    }
+    if (isEmail) {
       setLoginEndpoint('email')
-    } 
+    }
   }
-  
+
   // Function to handle user logout
   const logout = () => {
     // Clear user information and redirect to the login page
