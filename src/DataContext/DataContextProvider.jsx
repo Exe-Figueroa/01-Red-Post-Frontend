@@ -66,7 +66,6 @@ function DataContextProvider({ children }) {
     }
   };
   function verifyUserOrMail(userOrMail) {
-    console.log(userOrMail);
     // Regular expression for validating a username
     const userRegex = /^[a-zA-Z0-9_-]{3,16}$/;
 
