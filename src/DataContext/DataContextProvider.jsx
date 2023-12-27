@@ -35,7 +35,7 @@ function DataContextProvider({ children }) {
       }
       if (loginEndpoint === 'email') {
         userObject = {
-          email: username,
+          email: username.toLowerCase(),
           password
         }
       }

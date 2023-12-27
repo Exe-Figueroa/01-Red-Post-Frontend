@@ -4,9 +4,11 @@ import { base_url } from '../../../config/config';
 import { DataContext } from '../../DataContext/DataContextProvider';
 
 import './SendPost.css';
+import { Loader } from '../Loader/Loader';
 
 export function SendPost({ toggleSendPost }) {
   const { auth: { user }, successRequest, failureRequest } = useContext(DataContext);
+  const [isLoading, setIsLoading] = useState(false);
   const [dataState, setDataState] = useState({
     userId: user.userId,
     title: '',
@@ -34,6 +36,7 @@ export function SendPost({ toggleSendPost }) {
     toggleSendPost(false);
   };
   function onSubmit(e) {
+    setIsLoading(true);
     e.preventDefault();
     fetch(`${base_url}/posts`, {
       method: 'POST',
@@ -44,12 +47,13 @@ export function SendPost({ toggleSendPost }) {
       body: JSON.stringify(dataState)
     })
       .then(res => {
+        onCancel();
+        setIsLoading(false);
         if (res.ok) {
           successRequest('The post was sent correctly.')
         } else {
           failureRequest('Error sending the post.')
         }
-        onCancel();
       })
       .catch(e => {
         onCancel();
@@ -58,39 +62,44 @@ export function SendPost({ toggleSendPost }) {
 
   return (
     <div className='SendPost'>
-      <form
-        className="card-container"
-        onSubmit={onSubmit}
-      >
-        <input
-          type="text"
-          placeholder='Title'
-          className="title"
-          value={dataState.title}
-          onChange={(e) => titleOnChange(e.target.value)}
-        />
-        <textarea
-          value={dataState.content}
-          placeholder='Post content'
-          className='post-content'
-          onChange={(e) => contentOnChange(e.target.value)}
-        ></textarea>
-        <div className='validator-container'>
-          <button
-            type='submit'
-            className='post'
+      {
+        isLoading ?
+          <Loader />
+          :
+          <form
+            className="card-container"
+            onSubmit={onSubmit}
           >
-            Post
-          </button>
-          <button
-            type='button'
-            className='cancel'
-            onClick={onCancel}
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
+            <input
+              type="text"
+              placeholder='Title'
+              className="title"
+              value={dataState.title}
+              onChange={(e) => titleOnChange(e.target.value)}
+            />
+            <textarea
+              value={dataState.content}
+              placeholder='Post content'
+              className='post-content'
+              onChange={(e) => contentOnChange(e.target.value)}
+            ></textarea>
+            <div className='validator-container'>
+              <button
+                type='submit'
+                className='post'
+              >
+                Post
+              </button>
+              <button
+                type='button'
+                className='cancel'
+                onClick={onCancel}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+      }
     </div>
   );
 };
