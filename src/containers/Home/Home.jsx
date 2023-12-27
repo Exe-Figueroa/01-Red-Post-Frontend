@@ -22,14 +22,14 @@ export function Home() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
+        setData(data.reverse());
       })
       .catch(e => console.log(e));
 
       const socket = io(socket_url);
       socket.on('connect', () => {
         socket.on('posts', (postData) => {
-          setData((prevData) => [...prevData, postData]); 
+          setData((prevData) => [ postData, ...prevData]); 
         });
       });
     }, []);
