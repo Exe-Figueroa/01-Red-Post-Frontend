@@ -17,7 +17,6 @@ function DataContextProvider({ children }) {
     token: '',
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [loginEndpoint, setLoginEndpoint] = useState('');
 
   // Navigation and User Authentication using React Router
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ function DataContextProvider({ children }) {
   const login = async (username, password) => {
     try {
       setIsLoading(true);
-      verifyUserOrMail(username);
+      const loginEndpoint = verifyUserOrMail(username) || null;
       let userObject;
       if (loginEndpoint === 'username') {
         userObject = {
@@ -67,6 +66,7 @@ function DataContextProvider({ children }) {
     }
   };
   function verifyUserOrMail(userOrMail) {
+    console.log(userOrMail);
     // Regular expression for validating a username
     const userRegex = /^[a-zA-Z0-9_-]{3,16}$/;
 
@@ -80,10 +80,10 @@ function DataContextProvider({ children }) {
     const isEmail = emailRegex.test(userOrMail);
     // Determine the type of input and return a corresponding result
     if (isUser) {
-      setLoginEndpoint('username')
+      return 'username'
     }
     if (isEmail) {
-      setLoginEndpoint('email')
+      return 'email'
     }
   }
 
