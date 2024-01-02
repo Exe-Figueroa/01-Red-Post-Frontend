@@ -7,10 +7,12 @@ import './Register.css';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { base_url } from '../../../config/config';
+import { Loader } from '../../components/Loader/Loader';
 
 export function Register() {
   const { failureRequest, successRequest } = useContext(DataContext);
   const [eye, setEye] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
     name: '',
     lastName: '',
@@ -34,6 +36,7 @@ export function Register() {
     e.preventDefault();
     console.log('submit');
     try {
+      setIsLoading(true);
       fetch(`${base_url}/users`, {
         method: 'POST',
         headers: {
@@ -44,8 +47,10 @@ export function Register() {
         .then(async (res) => {
           const data = await res.json();
           if (res.ok) {
+            setIsLoading(false);
             successRequest('Successfully registered user')
           } else if (!res.ok && data.message) {
+            setIsLoading(false);
             failureRequest(data.message)
           }
         })
@@ -58,69 +63,72 @@ export function Register() {
 
   return (
     <div className='Register'>
-      <form
-        onSubmit={onSubmit}
-        className="register-container"
-      >
-        <input
-          value={data.name}
-          type="text"
-          placeholder='Name'
-          className='input'
-          onChange={(e) => {
-            onChange(e.target.id, e.target.value)
-          }}
-          id='name'
-        />
-        <input
-          value={data.lastName}
-          type="text"
-          placeholder='Last name'
-          className='input'
-          onChange={(e) => {
-            onChange(e.target.id, e.target.value)
-          }}
-          id='lastName'
-        />
-        <input
-          value={data.username}
-          type="text"
-          placeholder='Username'
-          className='input'
-          onChange={(e) => {
-            onChange(e.target.id, e.target.value)
-          }}
-          id='username'
-        />
-        <input
-          value={data.email}
-          type="text"
-          placeholder='Email'
-          className='input'
-          onChange={(e) => {
-            onChange(e.target.id, e.target.value)
-          }}
-          id='email'
-        />
-
-        <div className="container-input-password">
+      {isLoading ?
+        <Loader />
+        :
+        <form
+          onSubmit={onSubmit}
+          className="register-container"
+        >
           <input
-            value={data.password}
-            type={eye ? "password" : "text"}
-            placeholder='Password'
+            value={data.name}
+            type="text"
+            placeholder='Name'
             className='input'
             onChange={(e) => {
               onChange(e.target.id, e.target.value)
             }}
-            id='password'
+            id='name'
           />
-          {eye ?
-            <FaEyeSlash className='eye' onClick={toggleEye} />
-            :
-            <FaEye className='eye' onClick={toggleEye} />
-          }
-        </div>
-        {/* <div className="container-input-password">
+          <input
+            value={data.lastName}
+            type="text"
+            placeholder='Last name'
+            className='input'
+            onChange={(e) => {
+              onChange(e.target.id, e.target.value)
+            }}
+            id='lastName'
+          />
+          <input
+            value={data.username}
+            type="text"
+            placeholder='Username'
+            className='input'
+            onChange={(e) => {
+              onChange(e.target.id, e.target.value)
+            }}
+            id='username'
+          />
+          <input
+            value={data.email}
+            type="text"
+            placeholder='Email'
+            className='input'
+            onChange={(e) => {
+              onChange(e.target.id, e.target.value)
+            }}
+            id='email'
+          />
+
+          <div className="container-input-password">
+            <input
+              value={data.password}
+              type={eye ? "password" : "text"}
+              placeholder='Password'
+              className='input'
+              onChange={(e) => {
+                onChange(e.target.id, e.target.value)
+              }}
+              id='password'
+            />
+            {eye ?
+              <FaEyeSlash className='eye' onClick={toggleEye} />
+              :
+              <FaEye className='eye' onClick={toggleEye} />
+            }
+          </div>
+          {/* <div className="container-input-password">
           <input 
           type={eye? "text":"password"} 
           placeholder='Check Password' 
@@ -136,11 +144,11 @@ export function Register() {
           }
         </div> */}
 
-        <div className="buttons-container">
-          <button className='register-btn' type='submit'>Register</button>
-          <Link to='/login' className="login-btn">Login</Link>
-        </div>
-      </form>
+          <div className="buttons-container">
+            <button className='register-btn' type='submit'>Register</button>
+            <Link to='/login' className="login-btn">Login</Link>
+          </div>
+        </form>}
     </div>
   );
 };
