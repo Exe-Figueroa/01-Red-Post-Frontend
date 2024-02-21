@@ -1,4 +1,5 @@
 .RelatedUserPost{
+  position: relative;
   width: 100%;
   height: 60px;
   background-color: var(--light-violet);
@@ -7,6 +8,47 @@
   position: relative;
   margin-bottom: 15px;
   cursor: pointer;
+}
+
+
+
+.RelatedUserPost .delete-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-50%);
+  border: 2px solid var(--background-violet);
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--background-violet);
+  transition: ease .2s;
+}
+.RelatedUserPost .edit-icon {
+  position: absolute;
+  top: 0;
+  right: 35px;
+  transform: translateY(-50%);
+  border: 2px solid var(--background-violet);
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--background-violet);
+  transition: ease .2s;
+}
+
+.RelatedUserPost .edit-icon:hover, .delete-icon:hover{
+  background-color: var(--background-violet);
+  color: #fff;
+
 }
 
 .RelatedUserPost h2 {

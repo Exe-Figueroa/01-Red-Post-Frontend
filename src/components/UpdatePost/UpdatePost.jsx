@@ -1,21 +1,27 @@
-import React, { useContext, useState } from 'react';
+import { useState } from 'react';
 
 import { base_url } from '../../../config/config';
-import { DataContext } from '../../DataContext/DataContextProvider';
 
-import './SendPost.css';
+import '../SendPost/SendPost.css';
 import { Loader } from '../Loader/Loader';
 
-export function SendPost({ toggleSendPost }) {
-  const { auth: { user }, successRequest, failureRequest } = useContext(DataContext);
+export function UpdatePost({
+  toggleUpdatePost,
+  successRequest,
+  failureRequest,
+  user,
+  title,
+  content,
+}) {
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const [dataState, setDataState] = useState({
     userId: user.userId,
-    title: '',
-    content: ''
+    title: title,
+    content: content,
   });
 
+  
   function titleOnChange(value) {
     setDataState({
       ...dataState,
@@ -34,13 +40,13 @@ export function SendPost({ toggleSendPost }) {
       title: '',
       content: ''
     });
-    toggleSendPost(false);
+    toggleUpdatePost(false);
   };
   function onSubmit(e) {
     setIsLoading(true);
     e.preventDefault();
     fetch(`${base_url}/posts`, {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${user.token}`
@@ -51,9 +57,9 @@ export function SendPost({ toggleSendPost }) {
         onCancel();
         setIsLoading(false);
         if (res.ok) {
-          successRequest('The post was sent correctly.')
+          successRequest('Post updated correctly.')
         } else {
-          failureRequest('Error sending the post.')
+          failureRequest('Lo sentimos es una feature que no esta disponible por el momento.')
         }
       })
       .catch(e => {
@@ -89,7 +95,7 @@ export function SendPost({ toggleSendPost }) {
                 type='submit'
                 className='post'
               >
-                Post
+                Update
               </button>
               <button
                 type='button'

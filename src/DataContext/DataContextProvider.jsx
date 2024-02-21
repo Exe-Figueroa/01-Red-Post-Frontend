@@ -65,6 +65,7 @@ function DataContextProvider({ children }) {
       failureRequest(error, 'Operation failure');
     }
   };
+  
   function verifyUserOrMail(userOrMail) {
     // Regular expression for validating a username
     const userRegex = /^[a-zA-Z0-9_-]{3,16}$/;

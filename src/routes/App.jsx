@@ -20,7 +20,6 @@ function App() {
   const [seeSendPost, setSeeSendPost] = useState(false);
   function toggleSendPost(isActive) {
     setSeeSendPost(isActive);
-
   };
   return (
     <HashRouter>
