@@ -12,11 +12,11 @@ export function UpdatePost({
   user,
   title,
   content,
+  id,
 }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const [dataState, setDataState] = useState({
-    userId: user.userId,
     title: title,
     content: content,
   });
@@ -45,7 +45,7 @@ export function UpdatePost({
   function onSubmit(e) {
     setIsLoading(true);
     e.preventDefault();
-    fetch(`${base_url}/posts`, {
+    fetch(`${base_url}/posts/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
