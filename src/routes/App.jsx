@@ -6,6 +6,7 @@ import { Home } from '../containers/Home/Home.jsx';
 import { Login } from '../containers/Login/Login.jsx';
 import { Register } from "../containers/Register/Register.jsx";
 import { User } from "../containers/User/User.jsx";
+import { SeePost } from "../containers/SeePost/SeePost.jsx";
 
 //AuthRoute
 
@@ -28,6 +29,11 @@ function App() {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/post/:id" element={
+            <AuthRoute>
+              <SeePost />
+            </AuthRoute>
+          } />
           <Route path="/*"
             element={
               <AuthRoute>

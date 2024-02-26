@@ -1,0 +1,22 @@
+.SeePost {
+  padding: 17px 13px;
+}
+
+.SeePost .SeePost__title {
+  font-weight: bold;
+  font-size: 2.6rem;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--light-violet);
+}
+
+.SeePost .SeePost__content {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.SeePost .SeePost__content p {
+  font-size: 1.5rem;
+  font-weight: lighter;
+}

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../DataContext/DataContextProvider.jsx';
 
-import { io } from 'socket.io-client';
+// import { io } from 'socket.io-client';
 import { Header } from '../../components/Header/Header.jsx';
 import { PostCard } from '../../components/PostCard/PostCard.jsx';
 import { base_url, socket_url } from '../../../config/config.js';
@@ -26,12 +26,12 @@ export function Home() {
       })
       .catch(e => console.log(e));
 
-      const socket = io(socket_url);
-      socket.on('connect', () => {
-        socket.on('posts', (postData) => {
-          setData((prevData) => [ postData, ...prevData]); 
-        });
-      });
+      // const socket = io(socket_url);
+      // socket.on('connect', () => {
+      //   socket.on('posts', (postData) => {
+      //     setData((prevData) => [ postData, ...prevData]); 
+      //   });
+      // });
     }, []);
 
 
@@ -42,11 +42,12 @@ export function Home() {
         {data.map((item) => (
           <PostCard
             key={item.id}
-            id={item.user.id}
+            userId={item.user.id}
             title={item.title}
             content={item.content}
             date={item.createdAt}
             user={item.user.username}
+            id={item.id}
           />
         ))}
       </main>

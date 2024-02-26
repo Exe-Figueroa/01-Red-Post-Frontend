@@ -1,10 +1,25 @@
 import React from 'react';
-import './Header.css'
+import {Link} from 'react-router-dom';
 
-export function Header() {
+import {BsArrowLeftShort} from 'react-icons/bs';
+
+import './Header.css';
+
+export function Header({title}) {
+  console.log(window.location.hash);
+  function renderBackButton() {
+    if (window.location.hash !== '#/') {
+      return (
+        <Link to={'/'}>
+          <BsArrowLeftShort className='arrow-back'/>
+        </Link>
+      );
+    }
+  }
   return (
     <div className='Header'>
-      <h1>Blogpost Cufa</h1>
+      {renderBackButton()}
+      <h1>{title || 'Blogpost Cufa'}</h1>
     </div>
   );
 }

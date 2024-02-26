@@ -6,6 +6,10 @@
   border-radius: 16px;
   background: var(--light-violet);
   cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  color: black;
 }
 .PostCard .contentCard h3{
   width: 100%;

@@ -2,7 +2,7 @@ import { React, useState, useEffect, useContext } from 'react';
 import './User.css'
 import { base_url } from '../../../config/config.js';
 
-import { UserHeader } from '../../components/UserHeader/UserHeader.jsx';
+import { Header } from '../../components/Header/Header.jsx';
 import { UserDescription } from '../../components/UserDescription/UserDescription.jsx';
 import { RelatedUserPost } from '../../components/RelatedUser/RelatedUserPost.jsx';
 import { Loader } from '../../components/Loader/Loader.jsx';
@@ -20,7 +20,7 @@ export function User() {
     content: '',
     user: user,
   });
-  
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [seeUpdatePost, setSeeUpdatePost] = useState(false);
@@ -59,7 +59,6 @@ export function User() {
 
   }
   function editPost(data) {
-    // setIsLoading(true);
     setUpdateData({
       id: data.id,
       title: data.title,
@@ -70,42 +69,44 @@ export function User() {
   }
 
   return (
-    <div className='User'>
-
+    <>
       {
         isLoading &&
         <div className="loader-container">
           <Loader />
         </div>
       }
-      <UserHeader username={data.username} />
-      <UserDescription
-        name={data.name}
-        lastName={data.lastName}
-        username={data.username}
-        description={data.description} />
-      <h2 className='related-post-title'>Related Posts:</h2>
-      {data.posts && data.posts.map((item) => (
-        <RelatedUserPost
-          key={item.id}
-          data={item}
-          deletePost={deletePost}
-          editPost={editPost}
-          user={user}
-        />
-      ))}
+      <Header title={data.username} />
 
-      {seeUpdatePost && <UpdatePost
-        userId={data.userId}
-        id={updateData.id}
-        title={updateData.title}
-        content={updateData.content}
-        user={updateData.user}
-        toggleUpdatePost={toggleUpdatePost}
-        successRequest={successRequest}
-        failureRequest={failureRequest}
+      <div className='User'>
+        <UserDescription
+          name={data.name}
+          lastName={data.lastName}
+          username={data.username}
+          description={data.description} />
+        <h2 className='related-post-title'>Related Posts:</h2>
+        {data.posts && data.posts.map((item) => (
+          <RelatedUserPost
+            key={item.id}
+            data={item}
+            deletePost={deletePost}
+            editPost={editPost}
+            user={user}
+          />
+        ))}
+
+        {seeUpdatePost && <UpdatePost
+          userId={data.userId}
+          id={updateData.id}
+          title={updateData.title}
+          content={updateData.content}
+          user={updateData.user}
+          toggleUpdatePost={toggleUpdatePost}
+          successRequest={successRequest}
+          failureRequest={failureRequest}
         />}
-    </div>
+      </div>
+    </>
   );
 }
 
