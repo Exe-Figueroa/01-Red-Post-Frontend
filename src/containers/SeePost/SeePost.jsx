@@ -37,7 +37,7 @@ export function SeePost() {
     <>
       <Header />
       <div className='SeePost'>
-        <h1 className='SeePost__title'>SeePost</h1>
+        <h1 className='SeePost__title'>{data.title || '...loading'}</h1>
         <section className='SeePost__content'>
           {renderParagraphs()}
         </section>
